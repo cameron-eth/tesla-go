@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tesla Go +</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* CSS for image containers */
+        .image-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            transition: opacity 0.5s;
+            cursor: pointer;
+        }
+        /* CSS for arrows */
+        .arrow {
+            font-size: 20px;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        .arrow:hover {
+            color: blue;
+        }
+        /* Initial opacity for the second image */
+        .image-container:nth-child(2) img {
+            opacity: 0.3;
+        }
+        /* Flex container for image and arrows */
+        .image-flex-container {
+            display: flex;
+            align-items: flex-start; /* Align images at the top */
+            justify-content: center;
+            margin-bottom: 20px; /* Add margin for spacing */
+        }
+        .image-container img {
+            margin: 0; /* Remove default margin on images */
+            padding: 0; /* Remove default padding on images */
+        }
+    </style>
+</head>
+<body>
+    <section class="bg-black to-red-500 text-white p-8 mb-8">
+        <!-- Your content goes here -->
+        <h2 class="text-2xl font-semibold mb-4">Tesla Updates</h2>
+      
+        <!-- Create a card-like container for the data -->
+        <div class="bg-transparent transition duration-300 transform hover:scale-120 p-6 rounded-lg shadow-lg">
+            <!-- Data Visualization Section -->
+            <div class="flex justify-center mb-8">
+                <!-- Tesla Image Containers -->
+                <div class="image-flex-container">
+                    <div class="arrow" onclick="switchImage('prev')">←</div>
+                    <div class="image-container">
+                        <h1 class="text-2xl mb-4">Michael's 2017 Model Y</h1>
+                        <img src="tesla-removebg-preview (1).png"  onclick="switchImage('next')" alt="Tesla Vehicle" class="w-65 h-64 rounded-full flex transition duration-300 transform hover:scale-105">
+                    </div>
+                </div>
+                <div class=" ml-60 image-flex-container">
+                    <div class="image-container">
+                        <h1 class="text-2xl mb-4">Paula's 2019 Model Y</h1>
+                        <img src="2.png"  onclick="switchImage('next')" alt="Tesla Vehicle" class="w-65 h-64 rounded-full flex transition duration-300 transform hover:scale-105">
+                    </div>
+                    <div class="arrow" onclick="switchImage('next')">→</div>
+                </div>
+            </div>
+
+      
+            <!-- Thin Gray Line Separator -->
+            <hr class="border-t border-gray-300 my-4">
+            <div class="flex items-center justify-between mb-4 transition duration-300 transform hover:scale-105">
+                <div>
+                    <h3 class="text-lg font-semibold">Current Driver</h3>
+                    <p class="text-gray-400">Jamie Hoyer</p>
+                </div>
+            </div>
+      
+            <!-- Thin Gray Line Separator -->
+            <hr class="border-t border-gray-300 my-4">
+      
+            <!-- Data Item 1: Miles Driven -->
+            <div class="flex items-center justify-between mb-4 transition duration-300 transform hover:scale-105">
+                <div>
+                    <h3  class="text-lg font-semibold">Miles Driven</h3>
+                    <p class="text-gray-400">85,236</p>
+                </div>
+            </div>
+      
+            <!-- Thin Gray Line Separator -->
+            <hr class="border-t border-gray-300 my-4">
+      
+            <!-- Data Item 2: Battery Percentage -->
+            <div class="flex items-center justify-between mb-4 transition duration-300 transform hover:scale-105">
+                <div>
+                    <h3 class="text-lg font-semibold">Battery Percentage</h3>
+                    <div class="w-32 h-1 bg-orange-600 rounded-full"></div>
+                    <p class="text-gray-400">78%</p>
+                </div>
+            </div>
+            <hr class="border-t border-gray-300 my-4">
+      
+            <div class="flex items-center justify-between mb-4 transition duration-300 transform hover:scale-105">
+              <div>
+                  <h3 class="text-lg font-semibold">Revenue</h3>
+                  <div class="w-8 h-1 bg-green-600 rounded-full"></div>
+                  <p class="text-gray-400">12,345$</p>
+              </div>
+          </div>
+      
+          <hr class="border-t border-gray-300 my-4">
+      
+          <div class="flex items-center justify-between transition duration-300 transform hover:scale-105">
+            <div>
+                <h3 class="text-lg font-semibold">Amount Owed</h3>
+                <div class="w-14 h-1 bg-yellow-600 rounded-full"></div>
+                
+                <p class="text-gray-400">22,234$</p>
+            </div>
+
+            
+        </div>
+        <div >
+             <div class="w-40 h-40"></div>
+        </div>
+      
+        </div>
+    </section>
+    
+
+    <script>
+        
+        let currentImageIndex = 0;
+        function switchImage(direction) {
+            const images = document.querySelectorAll('.image-container img');
+            const arrows = document.querySelectorAll('.arrow');
+            images[currentImageIndex].style.opacity = 0.3;
+
+            if (direction === 'next') {
+                currentImageIndex = (currentImageIndex + 1) % images.length;
+            } else if (direction === 'prev') {
+                currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+            }
+
+            images[currentImageIndex].style.opacity = 1;
+            arrows[0].style.color = currentImageIndex === 0 ? 'blue' : '';
+            arrows[1].style.color = currentImageIndex === 1 ? 'blue' : '';
+        }
+    </script>
+</body>
+</html>
