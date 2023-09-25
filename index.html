@@ -50,10 +50,11 @@
         /* Media query for small screens */
         @media screen and (max-width: 768px) {
             .image-flex-container {
-                flex-direction: column; /* Stack images vertically */
+                flex-direction: column; /* Stack images and arrows vertically */
+                align-items: center; /* Center images and arrows horizontally */
             }
             .arrow {
-                display: none; /* Hide arrows on small screens */
+                margin-top: 10px; /* Add space between arrows and cars */
             }
         }
     </style>
@@ -69,18 +70,20 @@
             <div class="flex justify-center mb-8">
                 <!-- Tesla Image Containers -->
                 <div class="image-flex-container">
-                    <div class="arrow" onclick="switchImage('prev')">←</div>
                     <div class="image-container">
                         <h1 class="text-2xl mb-4">Michael's 2017 Model Y</h1>
                         <img src="tesla-removebg-preview (1).png"  onclick="switchImage('next')" alt="Tesla Vehicle" class="w-65 h-64 rounded-full flex transition duration-300 transform hover:scale-105">
+                        <div class="arrow" onclick="switchImage('prev')">←</div>
+                        <div class="arrow" onclick="switchImage('next')">→</div>
                     </div>
                 </div>
                 <div class="image-flex-container">
                     <div class="image-container">
                         <h1 class="text-2xl mb-4">Paula's 2019 Model Y</h1>
                         <img src="2.png"  onclick="switchImage('next')" alt="Tesla Vehicle" class="w-65 h-64 rounded-full flex transition duration-300 transform hover:scale-105">
+                        <div class="arrow" onclick="switchImage('prev')">←</div>
+                        <div class="arrow" onclick="switchImage('next')">→</div>
                     </div>
-                    <div class="arrow" onclick="switchImage('next')">→</div>
                 </div>
             </div>
 
