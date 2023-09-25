@@ -16,26 +16,15 @@
             cursor: pointer;
         }
 
-        /* CSS for arrows */
-        .arrow {
-            font-size: 20px;
-            cursor: pointer;
-            transition: color 0.3s;
-        }
-
-        .arrow:hover {
-            color: blue;
-        }
-
         /* Initial opacity for the second image */
         .image-container:nth-child(2) img {
             opacity: 0.3;
         }
 
-        /* Flex container for image and arrows */
+        /* Flex container for image */
         .image-flex-container {
             display: flex;
-            align-items: flex-start; /* Align images at the top */
+            align-items: center; /* Center images vertically */
             justify-content: center;
             margin-bottom: 20px; /* Add margin for spacing */
         }
@@ -50,11 +39,10 @@
         /* Media query for small screens */
         @media screen and (max-width: 768px) {
             .image-flex-container {
-                flex-direction: column; /* Stack images and arrows vertically */
-                align-items: center; /* Center images and arrows horizontally */
+                flex-direction: column; /* Stack images vertically */
             }
             .arrow {
-                margin-top: 10px; /* Add space between arrows and cars */
+                display: none; /* Hide arrows on small screens */
             }
         }
     </style>
@@ -72,17 +60,13 @@
                 <div class="image-flex-container">
                     <div class="image-container">
                         <h1 class="text-2xl mb-4">Michael's 2017 Model Y</h1>
-                        <img src="tesla-removebg-preview (1).png"  onclick="switchImage('next')" alt="Tesla Vehicle" class="w-65 h-64 rounded-full flex transition duration-300 transform hover:scale-105">
-                        <div class="arrow" onclick="switchImage('prev')">←</div>
-                        <div class="arrow" onclick="switchImage('next')">→</div>
+                        <img src="tesla-removebg-preview (1).png" alt="Tesla Vehicle" class="w-65 h-64 rounded-full flex transition duration-300 transform hover:scale-105">
                     </div>
                 </div>
                 <div class="image-flex-container">
                     <div class="image-container">
                         <h1 class="text-2xl mb-4">Paula's 2019 Model Y</h1>
-                        <img src="2.png"  onclick="switchImage('next')" alt="Tesla Vehicle" class="w-65 h-64 rounded-full flex transition duration-300 transform hover:scale-105">
-                        <div class="arrow" onclick="switchImage('prev')">←</div>
-                        <div class="arrow" onclick="switchImage('next')">→</div>
+                        <img src="2.png" alt="Tesla Vehicle" class="w-65 h-64 rounded-full flex transition duration-300 transform hover:scale-105">
                     </div>
                 </div>
             </div>
@@ -145,24 +129,5 @@
       
         </div>
     </section>
-
-    <script>
-        let currentImageIndex = 0;
-        function switchImage(direction) {
-            const images = document.querySelectorAll('.image-container img');
-            const arrows = document.querySelectorAll('.arrow');
-            images[currentImageIndex].style.opacity = 0.3;
-
-            if (direction === 'next') {
-                currentImageIndex = (currentImageIndex + 1) % images.length;
-            } else if (direction === 'prev') {
-                currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
-            }
-
-            images[currentImageIndex].style.opacity = 1;
-            arrows[0].style.color = currentImageIndex === 0 ? 'blue' : '';
-            arrows[1].style.color = currentImageIndex === 1 ? 'blue' : '';
-        }
-    </script>
 </body>
 </html>
